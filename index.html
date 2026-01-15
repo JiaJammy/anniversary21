@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Gift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Screen 1: Cake with Candles -->
+    <div class="screen screen-cake active" id="screen-cake">
+        <div class="cake-container">
+            <div class="cake">
+                <img src="assets/cake.png" alt="Cake with candles" class="cake-image">
+            </div>
+            <p class="instruction-text">Tap the cake to blow the candles 🕯️</p>
+        </div>
+    </div>
+
+    <!-- Screen 2: Closed Letter -->
+    <div class="screen screen-letter-closed" id="screen-letter-closed">
+        <div class="letter-container">
+            <div class="letter-closed" id="letter-closed">
+                <img src="assets/envelope.png" alt="Envelope" class="envelope-image">
+            </div>
+            <p class="instruction-text">Tap the letter to open it 💌</p>
+        </div>
+    </div>
+
+    <!-- Screen 3: Open Letter with Message -->
+    <div class="screen screen-letter-open" id="screen-letter-open">
+        <div class="letter-open-container">
+            <div class="letter-paper">
+                <div class="letter-content" id="letter-content">
+                    <!-- Message will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

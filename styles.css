@@ -1,0 +1,316 @@
+/* Reset and Base Styles */
+:root {
+    --pastel-pink-light: #f8e8e8;
+    --pastel-pink-medium: #f5d7d7;
+    --pastel-pink-accent: #e8c4c4;
+    --pastel-pink-shadow: rgba(232, 196, 196, 0.3);
+    --warm-beige-light: #f5e6d3;
+    --warm-beige-medium: #f0d9c4;
+    --text-color: #6b5b73;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Disable scrolling */
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, var(--warm-beige-light) 0%, var(--pastel-pink-light) 100%);
+    color: var(--text-color);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Screen Management */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Screen 1: Cake with Candles */
+.screen-cake {
+    background: linear-gradient(135deg, var(--warm-beige-light) 0%, var(--pastel-pink-light) 100%);
+}
+
+.cake-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.cake {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.cake-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    filter: drop-shadow(0 8px 16px var(--pastel-pink-shadow));
+}
+
+.cake-image.blowing-out {
+    opacity: 0.3;
+    transform: scale(0.95);
+}
+
+.instruction-text {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-top: 30px;
+    font-style: italic;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Screen 2: Closed Letter */
+.screen-letter-closed {
+    background: linear-gradient(135deg, var(--warm-beige-light) 0%, var(--pastel-pink-light) 100%);
+}
+
+.letter-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.letter-closed {
+    cursor: pointer;
+    margin-bottom: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.envelope-image {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 8px 20px var(--pastel-pink-shadow));
+}
+
+.letter-closed.opening {
+    animation: letterOpen 1s ease-in-out forwards;
+}
+
+@keyframes letterOpen {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+/* Screen 3: Open Letter */
+.screen-letter-open {
+    background: linear-gradient(135deg, var(--warm-beige-light) 0%, var(--pastel-pink-light) 100%);
+}
+
+.letter-open-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.letter-paper {
+    background: #faf7f0;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(220, 200, 180, 0.03) 2px,
+            rgba(220, 200, 180, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(220, 200, 180, 0.03) 2px,
+            rgba(220, 200, 180, 0.03) 4px
+        );
+    border-radius: 4px;
+    padding: 50px 40px;
+    box-shadow: 
+        0 4px 20px rgba(107, 91, 115, 0.15),
+        0 1px 3px rgba(107, 91, 115, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    min-height: 400px;
+    position: relative;
+    transform: rotate(-0.5deg);
+}
+
+/* Tape piece - Top Left */
+.letter-paper::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 60px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    transform: rotate(-8deg);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    z-index: 1;
+}
+
+/* Tape piece - Bottom Right */
+.letter-paper::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 30px;
+    width: 70px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    transform: rotate(6deg);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    z-index: 1;
+}
+
+.letter-content {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 2.2;
+    color: var(--text-color);
+    position: relative;
+    z-index: 2;
+    padding-left: 10px;
+}
+
+.letter-line {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeInLine 1s ease-in-out forwards;
+    margin-bottom: 12px;
+}
+
+.letter-line:last-child {
+    margin-bottom: 0;
+}
+
+/* Emphasis styling for "Love you LOADSSSS" */
+.letter-line-emphasis {
+    font-size: 24px;
+    color: rgba(107, 91, 115, 0.95);
+    text-shadow: 0 2px 4px rgba(232, 196, 196, 0.3);
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+/* Signature styling for "- Jia" */
+.letter-line-signature {
+    font-size: 16px;
+    opacity: 0.75;
+    font-style: italic;
+    transform: rotate(-0.5deg);
+    margin-top: 12px;
+}
+
+@keyframes fadeInLine {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .cake-image {
+        max-width: 240px;
+    }
+    
+    .envelope-image {
+        max-width: 220px;
+    }
+    
+    .letter-paper {
+        padding: 40px 25px;
+        min-height: 350px;
+        transform: rotate(-0.3deg);
+    }
+    
+    .letter-paper::before {
+        width: 50px;
+        height: 20px;
+        top: -6px;
+        left: 15px;
+    }
+    
+    .letter-paper::after {
+        width: 55px;
+        height: 20px;
+        bottom: -6px;
+        right: 20px;
+    }
+    
+    .letter-content {
+        padding-left: 5px;
+        font-size: 18px;
+    }
+    
+    .letter-line-emphasis {
+        font-size: 22px;
+    }
+    
+    .letter-line-signature {
+        font-size: 14px;
+    }
+    
+    .instruction-text {
+        font-size: 16px;
+    }
+}
