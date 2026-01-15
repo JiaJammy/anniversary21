@@ -56,7 +56,7 @@ html, body {
 }
 
 .anniversary-heading {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', 'Georgia', 'Times New Roman', cursive;
     font-size: 32px;
     font-weight: 500;
     color: var(--text-color);
