@@ -55,6 +55,28 @@ html, body {
     padding: 20px;
 }
 
+.anniversary-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: headingFadeIn 1.2s ease-out forwards;
+}
+
+@keyframes headingFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .cake {
     position: relative;
     display: inline-block;
@@ -269,6 +291,11 @@ html, body {
 
 /* Mobile Responsive */
 @media (max-width: 480px) {
+    .anniversary-heading {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+    
     .cake-image {
         max-width: 240px;
     }
